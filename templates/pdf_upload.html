@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block body %}
+    <h1>Tag Cloud Generator</h1>
+    <div class="container">
+      <form method="post" id="pdf_form" enctype="multipart/form-data" novalidate>
+  			{% csrf_token %}
+  			<input type="file" name="file" id="pdf">
+        <i onclick="clr()" class="fa fa-trash-o" style="float: right; padding-right: 378px;"></i>
+        <p id="error" style="color: red;"></p>
+  		</form><br><br>
+      <div><button class="user-btn" title="Upload PDF" name="close" id="submit-btn" type="button" onclick="uploadPDF();">Upload PDF</button></div>
+      <div class="loader" id="loader" style="margin: auto; display: none;"></div>
+    </div>
+    <br><br>
+    <div class="tagcloud" id="tagcloud">
+    </div>
+    <script src="{%static 'js/tagcloud.js'%}"></script>
+{% endblock %}
